@@ -1,10 +1,10 @@
 name: First Workflow
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 
-jobs: 
-  run-first-command:
+jobs:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Display some Text
-        run: echo "Some Text"
-  
+      - run: echo "Hello Actions"
