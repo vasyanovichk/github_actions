@@ -1,0 +1,13 @@
+name: Fourth Workflow
+on:
+  workflow_run: # вказуємо, що цей workflow буде запускатися після виконання іншого workflow
+    workflows: ["Third Workflow"] # вказуємо, що цей workflow буде запускатися після виконання "Third Workflow"
+    types:
+      - completed # вказуємо, що цей workflow буде запускатися після завершення "Third Workflow"
+
+jobs:
+  hello-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Files
+        run: echo "Hello"
