@@ -5,9 +5,15 @@ jobs:
   run-first-command:
     runs-on: ubuntu-latest
     steps:
-      - name: List Files and Copy Repo
-        run: ls -a # тут буде пусто, бо репозиторій ще не скопійований
-      - uses: actions/checkout@v6 # крок для копіювання репозиторію в робоче середовище
       - name: List Files
-        run: ls -a # тут вже буде видно всі файли репозиторію
+        run: ls -a # тут буде пусто, бо репозиторій ще не скопійований
+     # - uses: actions/checkout@v6 # крок для копіювання репозиторію в робоче середовище
+      - name: Copy Files
+        run: |
+          git init # ініціалізуємо git репозиторій
+          git remote add origin "https://GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY.git}" # додаємо віддалений репозиторій з використанням токена для аутентифікації
+          git fetch origin # отримуємо дані з віддаленого репозиторію
+          git checkout main # переключаємося на гілку main, щоб отримати файли з цієї гілки
+      - name: List Files
+        run: ls -a # тут вже будуть файли, бо репозиторій скопійований
           
