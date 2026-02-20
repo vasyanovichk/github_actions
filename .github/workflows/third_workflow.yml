@@ -11,7 +11,7 @@ jobs:
       - name: Copy Files
         run: |
           git init # ініціалізуємо git репозиторій
-          git remote add origin "https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/${GITHUB_REPOSITORY.git}" # додаємо віддалений репозиторій з використанням токена для аутентифікації
+          git remote add origin "https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git" # додаємо віддалений репозиторій з використанням токена для аутентифікації
           git fetch origin # отримуємо дані з віддаленого репозиторію
           git checkout main # переключаємося на гілку main, щоб отримати файли з цієї гілки
       - name: List Files
