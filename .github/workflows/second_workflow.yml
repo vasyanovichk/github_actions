@@ -1,0 +1,21 @@
+name: Second Workflow
+on: push # при пуші в гілку main
+
+jobs: # джоба виконує команди
+  run-first-command: # назва джоби
+    runs-on: ubuntu-latest # визначає систему, на якій буде виконуватися джоба
+    steps: # кроки, які будуть виконуватися в джобі
+      - name: Display Node Version on Ubuntu # назва кроку
+        run: node -v
+  run-pallet-command: # назва джоби
+    runs-on: windows-latest # визначає систему, на якій буде виконуватися джоба
+    steps:
+      - name: Display Node Version on Windows # назва кроку
+        run: node -v
+  run-second-command: # назва джоби
+    runs-on: macos-latest # визначає систему, на якій буде виконуватися джоба
+    needs: run-pallet-command # вказує, що ця джоба залежить від виконання джоби run-pallet-command (тобто вона буде виконуватися після неї)
+#    needs: [run-first-command, run-pallet-command] # вказує, що ця джоба залежить від виконання джоб run-first-command та run-pallet-command (тобто вона буде виконуватися після них)
+    steps:
+      - name: Display Node Version on MacOS # назва кроку
+        run: node -v
