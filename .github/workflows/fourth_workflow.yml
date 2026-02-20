@@ -6,8 +6,15 @@ on:
       - completed # вказуємо, що цей workflow буде запускатися після завершення "Third Workflow"
 
 jobs:
-  hello-command:
+  success-command:
     runs-on: ubuntu-latest
+    # вказуємо, що ця джоба буде виконуватися тільки якщо "Third Workflow" завершився успішно
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - name: List Files
-        run: echo "Hello"
+        run: echo "Success"
+  failure-command:
+    runs-on: ubuntu-latest
+    # вказуємо, що ця джоба буде виконуватися тільки якщо "Third Workflow" завершився з помилкою
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+        run: echo "Faild"
