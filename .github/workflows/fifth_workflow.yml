@@ -1,5 +1,5 @@
 name: Fifth Workflow
-on: [push, issue, pull_request] # при пуші в гілку main, створенні issue або pull request
+on: [push, issues, pull_request] # при пуші в гілку main, створенні issue або pull request
 
 jobs:
   fiveth-command:
