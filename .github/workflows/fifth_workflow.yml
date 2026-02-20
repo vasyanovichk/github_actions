@@ -1,0 +1,11 @@
+name: Fifth Workflow
+on: [push, issue, pull_request] # при пуші в гілку main, створенні issue або pull request
+
+jobs:
+  fiveth-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Event Vars
+        run: |
+          echo $GITHUB_SHA # виводить хеш коміту, який спричинив запуск workflow
+          echo $GITHUB_REF # виводить гілку або тег, який спричинив запуск workflow
